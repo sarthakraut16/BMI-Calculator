@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: black;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        /* background-color: black; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background-color: white;
+        /* display: inline-block; */
+        padding: 20px;
+        font-size: 30px;
+        /* height: 200px; */
+        width: 300px;
+        border-radius: 10px;
+        font-size: larger;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-direction: column;
+    }
+
+
+
+    .wrapper {
+        padding: 10px;
+        font-size: 25px;
+        display: inline-block;
+        text-align: center;
+        /* width: auto; */
+    }
+
+    .wrapper input {
+        height: 35px;
+        margin-top: 10px;
+        padding-left: 5px;
+
+    }
+
+    .output {
+        display: inline-block;
+        text-align: center;
+        margin: 20px 0;
+        background-color: #0075FF;
+        color: #ffffff;
+        padding: 10px 30px;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+        border-radius: 2px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="wrapper">
+                Weight (in Kgs) <input type="number" name="weight" id="weight" placeholder="0 Kg" oninput="colour()">
+            </div>
+            <div class="wrapper">
+                Height (in meters) <input type="number" name="height" id="height" placeholder="0 mtr"
+                    oninput="colour()">
+            </div>
+
+            <span id="output" class="output">BMI: 00.0</span>
+            <Span id="bmi-value"></Span>
+        </div>
+    </div>
+
+    <script>
+        function colour() {
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            document.getElementById("output").innerHTML = 'BMI: ' + parseFloat(weight / (height * height)).toFixed(2);
+
+            if (parseFloat(weight / (height * height)).toFixed(2) > 18.5 && parseFloat(weight / (height * height)).toFixed(2) < 25) {
+                document.getElementById("bmi-value").innerHTML = 'Normal Range'
+            }
+            if (parseFloat(weight / (height * height)).toFixed(2) >= 25 && parseFloat(weight / (height * height)).toFixed(2) < 30) {
+                document.getElementById("bmi-value").innerHTML = 'Overweight'
+            }
+            if (parseFloat(weight / (height * height)).toFixed(2) >= 30) {
+                document.getElementById("bmi-value").innerHTML = 'Obese'
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
